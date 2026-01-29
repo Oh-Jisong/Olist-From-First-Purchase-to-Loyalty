@@ -8,7 +8,9 @@
   Olist 이커머스 데이터를 활용한 첫 구매 기반 고객 충성도 예측 & 관문상품(Gateway Product) 분석 플랫폼
 </p>
 
-[![Streamlit App](https://img.shields.io/badge/Live_Dashboard-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://olist-dashboard-xqwt8ppwsnpabjqykshqxd.streamlit.app/)
+<p align = "center">
+  [![Streamlit App](https://img.shields.io/badge/Live_Dashboard-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://olist-dashboard-xqwt8ppwsnpabjqykshqxd.streamlit.app/)
+</p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.10+-blue.svg" alt="Python">
@@ -40,7 +42,7 @@ Olist 이커머스 공개 데이터를 활용하여:
 
 ## Project Report (PDF)
 
-[📄 Download Full Report (PDF)](docs/project_report.pdf)
+[📄 프로젝트 PDF 다운로드](docs/project_report.pdf)
 
 ---
 

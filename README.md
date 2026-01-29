@@ -38,6 +38,12 @@ Olist 이커머스 공개 데이터를 활용하여:
 
 ---
 
+## Project Report (PDF)
+
+[📄 Download Full Report (PDF)](docs/project_report.pdf)
+
+---
+
 ## Why This Project
 
 Olist 데이터 분석 결과, **첫 구매 고객 중 재구매 전환율은 약 3% 수준**으로 매우 낮은 구조를 보였습니다.
@@ -67,30 +73,6 @@ Olist 데이터 분석 결과, **첫 구매 고객 중 재구매 전환율은 �
 
 - **Interactive Dashboard**
   - Streamlit 기반 실시간 필터링 및 결과 탐색
-
----
-
-## UI Preview (Dashboard)
-
-<table>
-  <tr>
-    <td align="center"><b>Main Dashboard</b></td>
-    <td align="center"><b>Gateway Product Analysis</b></td>
-  </tr>
-  <tr>
-    <td><img src="screenshots/dashboard_main.png" width="100%"></td>
-    <td><img src="screenshots/dashboard_gateway.png" width="100%"></td>
-  </tr>
-</table>
-
-<table>
-  <tr>
-    <td align="center"><b>SHAP Feature Importance</b></td>
-  </tr>
-  <tr>
-    <td><img src="screenshots/dashboard_shap.png" width="100%"></td>
-  </tr>
-</table>
 
 ---
 

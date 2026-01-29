@@ -1,102 +1,235 @@
-# Olist 고객 충성도 분석 및 재구매 예측 모델
+<p align="center">
+  <img src="assets/banner.png" width="100%" alt="banner">
+</p>
+
+<h1 align="center">From First Purchase to Loyalty</h1>
+
+<p align="center">
+  Olist 이커머스 데이터를 활용한 첫 구매 기반 고객 충성도 예측 & 관문상품(Gateway Product) 분석 플랫폼
+</p>
 
 [![Streamlit App](https://img.shields.io/badge/Live_Dashboard-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://olist-dashboard-xqwt8ppwsnpabjqykshqxd.streamlit.app/)
 
-## 프로젝트 개요
-
-Olist는 브라질의 대규모 이커머스 플랫폼이지만<br>
-**신규 고객의 재구매율이 약 3%에 불과**하다는 심각한 문제를 안고 있습니다. <br>
-본 프로젝트는 데이터 분석을 통해 '한 번 구매한 고객을 어떻게 충성 고객으로 만들 것인가?'라는 핵심 질문에 답하고자 합니다.
-
-단순한 현상 분석을 넘어, **고객의 첫 구매 경험이 미래의 충성도에 미치는 영향**을 과학적으로 증명하고 이를 기반으로 구체적인 비즈니스 전략을 제시하는 것을 목표로 합니다.
-
----
-
-## 핵심 목표 및 가설
-
-* **Main Goal:** 신규 고객의 재구매를 유도하는 핵심 요인을 발굴하고 재구매 가능성이 높은 고객을 예측하는 머신러닝 모델 개발<br>
-* **Hypothesis:** 좋은 **관문 상품(Gateway Product)**은 고객의 긍정적인 첫 구매 경험을 유도하여 미래의 재구매를 이끌어낼 것이다.
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.10+-blue.svg" alt="Python">
+  <img src="https://img.shields.io/badge/Pandas-Numpy-success.svg" alt="EDA">
+  <img src="https://img.shields.io/badge/Model-RandomForest-orange.svg" alt="Model">
+  <img src="https://img.shields.io/badge/XAI-SHAP-purple.svg" alt="SHAP">
+  <img src="https://img.shields.io/badge/Dashboard-Streamlit-red.svg" alt="Streamlit">
+  <img src="https://img.shields.io/badge/Status-Active-success.svg" alt="Status">
+</p>
 
 ---
 
-## 분석 과정 및 방법론
+## Project Overview
 
-본 프로젝트는 다음과 같은 체계적인 단계를 거쳐 진행되었습니다.
+본 프로젝트는 **첫 구매 정보만으로 고객의 재구매(충성 고객) 가능성을 예측**하고,  
+재구매 전환에 기여하는 **관문상품(Gateway Product)**을 데이터 기반으로 탐색하는 분석 시스템입니다.
 
-1.  **EDA (탐색적 데이터 분석):** Olist 데이터셋의 전반적인 구조를 파악하고 고객 및 주문 데이터의 분포와 성장 추세를 시각화하여 비즈니스 현황을 진단했습니다.
+Olist 이커머스 공개 데이터를 활용하여:
 
-2.  **핵심 지표 정의:**<br>
-      가설 검증을 위해 '관문 상품'의 효과를 측정할 수 있는 **관문 점수(Gateway Score)**를 새롭게 정의했습니다. <br>
-      이는 LTV(고객 생애 가치), 재구매율, 전환율 등 여러 KPI를 종합한 지표입니다.
+- 첫 구매 시점 특성(feature engineering)
+- 충성 고객 예측 모델 구축
+- SHAP 기반 모델 해석
+- Gateway Score 산출
+- Streamlit 대시보드 시각화
 
-4.  **머신러닝 모델링:**
-      신규 고객의 정보를 바탕으로 **미래 재구매 여부를 예측**하는 분류 모델(Random Forest)을 구축했습니다.<br>
-      이를 통해 마케팅 자원을 효율적으로 분배할 수 있는 기반을 마련했습니다.<br>
-    * **Target:** `is_loyal` (재구매 여부)
-    * **Features:** 첫 구매 관련 정보 (카테고리, 가격, 할부 개월 수, 배송 시간 등)
-
-6.  **모델 해석 (XAI):**
-      예측 모델이 '왜' 그렇게 판단했는지 이해하기 위해 **SHAP(SHapley Additive exPlanations) 분석**을 수행했습니다.<br>
-      이를 통해 어떤 변수가 고객의 재구매 결정에 가장 큰 영향을 미치는지 과학적으로 증명했습니다.
+까지 **엔드투엔드 분석 파이프라인**을 구현했습니다.
 
 ---
 
-## 주요 발견 (Key Insights)
+## Why This Project
 
-데이터 분석을 통해 모델의 예측을 해석한 결과, 다음과 같은 매우 의미 있는 인사이트를 발견했습니다.
+Olist 데이터 분석 결과, **첫 구매 고객 중 재구매 전환율은 약 3% 수준**으로 매우 낮은 구조를 보였습니다.
 
-> **"고객의 첫 구매 금액이 낮을수록, 그리고 할부 개월 수가 짧을수록 해당 고객은 충성 고객이 될 확률이 압도적으로 높다."**
+기존 CRM 접근 방식의 한계:
 
-이는 '비싼 상품을 팔아야 이익이 남는다'는 통념을 뒤집는 결과입니다. <br>
-Olist의 성장을 위해서는 **저렴한 '관문 상품'으로 진입 장벽을 낮추고, 긍정적인 첫 구매 경험을 제공하여 고객을 플랫폼에 락인(Lock-in)시키는 전략**이 무엇보다 중요합니다.
+- 구매 이력 누적 이후에만 타겟팅 가능
+- 초기에 이탈하는 고객에 대한 대응 부족
+- 단순 매출 기반 상품 분석 → 충성도 기여도 반영 부족
+
+→ 본 프로젝트는 **첫 구매 시점에서 이미 충성 고객 가능성을 예측하고**,  
+**재구매 전환에 효과적인 상품 카테고리를 식별**하는 것을 목표로 합니다.
 
 ---
 
-## 프로젝트 구조
+## Core Features
+
+- **Loyalty Prediction Model**
+  - 첫 구매 데이터 기반 충성 고객(is_loyal) 예측
+
+- **Gateway Product Discovery**
+  - 재구매율·LTV·전환 기여도를 통합한 Gateway Score 산출
+
+- **Explainable AI (SHAP)**
+  - 모델 의사결정 근거 시각화
+  - 가격, 배송시간, 카테고리 영향도 분석
+
+- **Interactive Dashboard**
+  - Streamlit 기반 실시간 필터링 및 결과 탐색
+
+---
+
+## UI Preview (Dashboard)
+
+<table>
+  <tr>
+    <td align="center"><b>Main Dashboard</b></td>
+    <td align="center"><b>Gateway Product Analysis</b></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/dashboard_main.png" width="100%"></td>
+    <td><img src="screenshots/dashboard_gateway.png" width="100%"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td align="center"><b>SHAP Feature Importance</b></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/dashboard_shap.png" width="100%"></td>
+  </tr>
+</table>
+
+---
+
+## System Architecture
+
+- **Data Processing**
+  - Pandas 기반 전처리 & Feature Engineering
+
+- **ML Pipeline**
+  - RandomForest 모델 학습
+  - Hyperparameter tuning
+
+- **XAI Layer**
+  - SHAP 기반 feature attribution
+
+- **Visualization**
+  - Streamlit 웹 대시보드
+
+---
+
+## Dataset
+
+- **Source**: Brazilian E-commerce Public Dataset (Olist)
+- **Key Tables Used**
+  - orders
+  - order_items
+  - customers
+  - products
+  - order_payments
+  - order_reviews
+
+---
+
+## Feature Engineering
+
+첫 구매 시점 기준으로 다음 정보를 생성했습니다:
+
+- 결제 금액, 할부 개월 수
+- 배송 소요 시간
+- 상품 카테고리
+- 리뷰 점수
+- 배송 지연 여부
+- 구매 시기 특성
+
+Target Label:
+
+- `is_loyal`  
+  → 일정 기간 내 재구매 여부 기반 이진 분류
+
+---
+
+## Modeling Pipeline
+
+### Model
+
+- Random Forest Classifier
+
+### Training Flow
+
+1. Data Cleaning
+2. Feature Scaling / Encoding
+3. Train / Validation Split
+4. Model Training
+5. SHAP Interpretation
+
+---
+
+## Gateway Score Logic
+
+Gateway Score는 단순 매출 기반이 아닌 다음 요소를 통합하여 산출했습니다:
+
+- 재구매 전환율
+- 평균 LTV
+- 충성 고객 비중
+
+### Concept Formula
 
 ```
-.
-├── 📂 code
-│   └── 📜 final_code.ipynb       # 데이터 전처리, 모델링, SHAP 분석 등 모든 분석 과정
-│
-├── 📂 data
-│   └── (raw data files)         # Olist 제공 원본 데이터셋
-│
-├── 📂 rslt
-│   ├── 📄 category_state_distribution.xlsx
-│   ├── 📄 category_state_loyal_customers.xlsx
-│   ├── 📄 final_kpi_table.xlsx
-│   ├── 📄 model_predictions_by_state.xlsx
-│   ├── 📄 random_forest_pipeline.joblib  # 학습 완료된 머신러닝 모델
-│   ├── 📄 state_kpi_data.xlsx
-│   └── 📄 state_logistics_data.xlsx
-│
-├── 📂 dashboard
-│   ├── 📜 app04.py               # Streamlit 인터랙티브 대시보드 앱 코드
-│   └── (dashboard data)       # 대시보드 구동에 필요한 데이터 파일
-├── 📄 list_pdf                # 발표 자료
-│
-│
-└── 📜 README.md                  # 프로젝트 설명 파일
+Gateway Score = α * Repurchase Rate
++ β * Normalized LTV
++ γ * Loyalty Contribution
+```
+
+이를 통해 **충성 고객 유입 관점에서 가장 효과적인 카테고리/상품군**을 도출했습니다.
+
+---
+
+## Project Structure
+
+```bash
+Olist-From-First-Purchase-to-Loyalty/
+ ├── data/
+ │   ├── raw/
+ │   └── processed/
+ ├── notebooks/
+ │   ├── eda.ipynb
+ │   ├── feature_engineering.ipynb
+ │   └── modeling.ipynb
+ ├── model/
+ │   └── rf_model.pkl
+ ├── app.py
+ ├── requirements.txt
+ ├── assets/
+ └── screenshots/
 ```
 
 ---
 
-## 대시보드 실행 방법
+## Getting Started
 
-**직접 페이지로 들어갈 수 있는 링크 : https://olist-dashboard-xqwt8ppwsnpabjqykshqxd.streamlit.app/**
+### 1) Clone
+```
+git clone https://github.com/Oh-Jisong/Olist-From-First-Purchase-to-Loyalty.git
+```
 
-본 프로젝트의 분석 결과를 마케팅 담당자나 의사결정자가 쉽게 탐색하고 활용할 수 있도록 인터랙티브 대시보드를 구축했습니다.
+### 2) Install Dependencies
+```
+pip install -r requirements.txt
+```
 
-1.  **필요 라이브러리 설치:**
-    ```bash
-    pip install streamlit pandas scikit-learn joblib
-    ```
-
-2.  **대시보드 실행:**
-    터미널(CLI)에서 아래 명령어를 입력하여 대시보드를 실행합니다.
-    ```bash
-    streamlit run dashboard/app04.py
-    ```
+### 3) Run Dashboard
+```
+streamlit run app.py
+```
 
 ---
+
+## What I Learned
+- 대규모 이커머스 데이터 전처리 및 Feature Engineering 설계
+- 첫 구매 기반 행동 예측 문제 정의 경험
+- RandomForest 기반 분류 모델 구축
+- SHAP 기반 모델 해석 실무 적용
+- 데이터 분석 결과를 대시보드로 제품화하는 파이프라인 구축
+
+---
+
+## Future Improvements
+- [ ] LightGBM / XGBoost 모델 비교
+- [ ] Precision@K 기반 마케팅 타겟팅 평가
+- [ ] 실시간 API 기반 추천 구조 확장
+- [ ] 고객 세그먼트별 Gateway Score 분리
+- [ ] A/B 테스트 시뮬레이션 구조 추가
